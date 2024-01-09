@@ -8,25 +8,43 @@
       "rev": "v3.2.0",
       "hooks": [
         {
-          "id": "trailing-whitespace"
+          "id": "trailing-whitespace",
+          "stages": [
+            "pre-push"
+          ]
         },
         {
-          "id": "end-of-file-fixer"
+          "id": "end-of-file-fixer",
+          "stages": [
+            "pre-push"
+          ]
         },
         {
           "id": "check-yaml",
           "args": [
             "--allow-multiple-documents"
+          ],
+          "stages": [
+            "pre-push"
           ]
         },
         {
-          "id": "check-added-large-files"
+          "id": "check-added-large-files",
+          "stages": [
+            "pre-push"
+          ]
         },
         {
-          "id": "check-json"
+          "id": "check-json",
+          "stages": [
+            "pre-push"
+          ]
         },
         {
-          "id": "check-merge-conflict"
+          "id": "check-merge-conflict",
+          "stages": [
+            "pre-push"
+          ]
         }
       ]
     },
@@ -45,7 +63,10 @@
             "javascript",
             "ts"
           ],
-          "pass_filenames": false
+          "pass_filenames": false,
+          "stages": [
+            "pre-push"
+          ]
         },
         {
           "id": "node-commitlint",
@@ -55,7 +76,21 @@
             "commitlint"
           ],
           "language": "script",
-          "always_run": true
+          "always_run": true,
+          "stages": [
+            "pre-push"
+          ]
+        },
+        {
+          "id": "local-repo-hook",
+          "name": "local-repo-hook",
+          "entry": "/Users/jmoses/dev/misc/pre-commit-global/scripts/local-scripts.sh",
+          "language": "script",
+          "always_run": true,
+          "stages": [
+            "pre-push",
+            "pre-commit"
+          ]
         }
       ]
     }
