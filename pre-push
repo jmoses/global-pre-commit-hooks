@@ -5,7 +5,7 @@
 HERE="$(cd "$(dirname "$0")" && pwd)"
 # start templated
 INSTALL_PYTHON=/Users/jmoses/.asdf/installs/python/3.9.6/bin/python3.9
-ARGS=(hook-impl --config="${HERE}/pre-commit-config.yaml" --hook-type=pre-push --skip-on-missing-config)
+ARGS=(hook-impl --config="${HERE}/generated-config/pre-commit-config.yaml" --hook-type=pre-push --skip-on-missing-config)
 # end templated
 
 ARGS+=(--hook-dir "$HERE" -- "$@")
