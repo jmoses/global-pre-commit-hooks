@@ -16,7 +16,16 @@ repos:
   hooks:
     - id: node-lint
       name: node-lint
-      entry: /Users/jmoses/dev/misc/pre-commit-global/scripts/node/lint.sh
+      entry: /Users/jmoses/dev/misc/pre-commit-global/scripts/node/npm-task-if-exists.sh
+      args:
+        - lint
       language: script
       types_or: [javascript, ts]
       pass_filenames: false
+    - id: node-commitlint
+      name: node-commitlint
+      entry: /Users/jmoses/dev/misc/pre-commit-global/scripts/node/npm-task-if-exists.sh
+      args:
+        - commitlint
+      language: script
+      always_run: true
