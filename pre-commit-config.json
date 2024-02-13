@@ -49,6 +49,19 @@
       ]
     },
     {
+      "repo": "https://github.com/codespell-project/codespell",
+      "rev": "v2.2.4",
+      "hooks": [
+        {
+          "id": "codespell",
+          "stages": [
+            "pre-push"
+          ],
+          "exclude": "package-lock\\.json"
+        }
+      ]
+    },
+    {
       "repo": "local",
       "hooks": [
         {
