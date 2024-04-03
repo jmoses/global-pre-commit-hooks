@@ -1,5 +1,6 @@
 #!/bin/bash
 
 set -e
-
-yq pre-commit-config.json --output-format yaml > generated-config/pre-commit-config.yaml
+ROOT="$(pwd)"
+mkdir -p generated-config
+yq pre-commit-config.json --output-format yaml | sed "s+\$this+${ROOT}+g" > generated-config/pre-commit-config.yaml

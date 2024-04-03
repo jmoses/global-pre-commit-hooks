@@ -67,7 +67,7 @@
         {
           "id": "node-lint",
           "name": "node-lint",
-          "entry": "/Users/jmoses/dev/misc/pre-commit-global/scripts/node/npm-task-if-exists.sh",
+          "entry": "$this/scripts/node/npm-task-if-exists.sh",
           "args": [
             "lint"
           ],
@@ -85,7 +85,7 @@
         {
           "id": "node-commitlint",
           "name": "node-commitlint",
-          "entry": "/Users/jmoses/dev/misc/pre-commit-global/scripts/node/npm-task-if-exists.sh",
+          "entry": "$this/scripts/node/npm-task-if-exists.sh",
           "args": [
             "commitlint"
           ],
@@ -99,7 +99,7 @@
         {
           "id": "local-repo-hook",
           "name": "local-repo-hook",
-          "entry": "/Users/jmoses/dev/misc/pre-commit-global/scripts/local-scripts.sh",
+          "entry": "$this/scripts/local-scripts.sh",
           "language": "script",
           "always_run": true,
           "pass_filenames": false,
