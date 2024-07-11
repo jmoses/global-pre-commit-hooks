@@ -14,6 +14,10 @@ git config --global core.hooksPath $(pwd)
 
 ## To add new hooks
 
-If you want to use other hooks than the ones that exist, you can get `pre-commit` to output what they would be, by using the `pre-commit init-templatdir` command.  It will output the "proper" hooks into a `hooks` directory and they can be copied over to this repos root.
+From the clone of this repo:
 
-You then have to move the `HERE` variable declaration above the "templated" section, and update the config path in the `ARGS` variable to be `--config="${HERE}/generated-config/pre-commit-config.yaml"` to pick up the global config.
+```shell
+> python bin/add-hook {hook_name}
+```
+
+Where `hook_name` is anything that pre-commit supports on it's own.  This will write out the normal hook file, then read it in, modify it, and write it into the current directory, where it will start to be used immediately.
