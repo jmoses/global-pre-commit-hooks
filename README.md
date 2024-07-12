@@ -6,18 +6,20 @@ It will run all of the configured hooks at the appropriate time.  It will also c
 
 ## To enable
 
-Install `pre-commit`, `yq`, and clone this repo.  Then from in the clone
+Install `pre-commit`, `yq`, `jq` and clone this repo.  Then from in the clone
 
 ```
-git config --global core.hooksPath $(pwd)
+git config --global core.hooksPath $(pwd)/hooks
 ```
+
+Then just add the hooks you're interested in as outlined below.  The default config has hooks for `pre-push` and `pre-commit`.
 
 ## To add new hooks
 
 From the clone of this repo:
 
 ```shell
-> python bin/add-hook {hook_name}
+> python bin/add-hook.py {hook_name}
 ```
 
 Where `hook_name` is anything that pre-commit supports on it's own.  This will write out the normal hook file, then read it in, modify it, and write it into the current directory, where it will start to be used immediately.

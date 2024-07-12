@@ -12,9 +12,10 @@ TEMPLATE_START = "# start templated\n"
 TEMPLATE_END = "# end templated\n"
 
 hook_name = sys.argv[1]
+hook_path = os.path.join("hooks", hook_name)
 
-if os.path.exists(hook_name):
-    print(f"File {hook_name} already exists")
+if os.path.exists(hook_path):
+    print(f"File {hook_path} already exists")
     sys.exit(1)
 
 target = tempfile.TemporaryDirectory()
@@ -34,14 +35,14 @@ before += f"\n{here_arg.group(0)}\n"
 after = after.replace(here_arg.group(0), "")
 commands = commands.replace(
     "--config=.pre-commit-config.yaml",
-    '--config="${HERE}/generated-config/pre-commit-config.yaml"',
+    '--config="${HERE}/../generated-config/pre-commit-config.yaml"',
 )
 
-with open(hook_name, "w") as out:
+with open(hook_path, "w") as out:
     out.write(before)
     out.write(commands)
     out.write(after)
 
-original_mode = os.stat(hook_name).st_mode
+original_mode = os.stat(hook_path).st_mode
 new_mode = original_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
-os.chmod(hook_name, new_mode)
+os.chmod(hook_path, new_mode)
