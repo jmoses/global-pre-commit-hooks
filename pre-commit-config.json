@@ -62,52 +62,42 @@
       ]
     },
     {
-      "repo": "local",
+      "repo": "https://github.com/jmoses/global-pre-commit-hooks.git",
+      "rev": "89da7871ee4e38e3f23b5df200697ec745dfd406",
       "hooks": [
         {
-          "id": "node-lint",
-          "name": "node-lint",
-          "entry": "$this/scripts/node/npm-task-if-exists.sh",
+          "id": "npm-task-if-exists",
+          "name": "npm lint",
           "args": [
             "lint"
           ],
-          "language": "script",
-          "types_or": [
-            "javascript",
-            "ts"
-          ],
-          "pass_filenames": false,
           "verbose": true,
           "stages": [
             "pre-push"
           ]
         },
         {
-          "id": "node-commitlint",
-          "name": "node-commitlint",
-          "entry": "$this/scripts/node/npm-task-if-exists.sh",
+          "id": "npm-task-if-exists",
+          "name": "npm commitlit",
           "args": [
             "commitlint"
           ],
-          "language": "script",
-          "always_run": true,
-          "pass_filenames": false,
           "stages": [
             "pre-push"
           ]
         },
         {
           "id": "local-repo-hook",
-          "name": "local-repo-hook",
-          "entry": "$this/scripts/local-scripts.sh",
-          "language": "script",
-          "always_run": true,
-          "pass_filenames": false,
           "stages": [
             "pre-push",
             "pre-commit"
           ]
-        },
+        }
+      ]
+    },
+    {
+      "repo": "local",
+      "hooks": [
         {
           "id": "panic-if-local-precommit",
           "name": "panic-if-local-precommit",
