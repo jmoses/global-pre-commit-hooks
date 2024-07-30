@@ -23,3 +23,7 @@ From the clone of this repo:
 ```
 
 Where `hook_name` is anything that pre-commit supports on it's own.  This will write out the normal hook file, then read it in, modify it, and write it into the current directory, where it will start to be used immediately.
+
+### Global pre-commit config location
+
+By default the `add-hook.py` command will expect the pre-commit config to be `[repo clone location]/.pre-commit-config.yaml`.  If you want to have it read from somewhere else, the `add-hook.py` command will read from the `PRECOMMIT_CONFIG_PATH` environment variable, which should be a path _relative_ to the repo clone location.

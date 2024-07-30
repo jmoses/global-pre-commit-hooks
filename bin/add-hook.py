@@ -7,6 +7,9 @@ import os.path
 import stat
 import re
 
+# Set the config path. Note this is relative to the global-pre-commit-hooks repo.
+CONFIG_PATH = os.environ.get("PRECOMMIT_CONFIG_PATH", ".pre-commit-config.yaml")
+
 # from https://github.com/pre-commit/pre-commit/blob/faa6f8c70ccef865884adb0cb079c8162013bf19/pre_commit/commands/install_uninstall.py#L31
 TEMPLATE_START = "# start templated\n"
 TEMPLATE_END = "# end templated\n"
@@ -35,7 +38,7 @@ before += f"\n{here_arg.group(0)}\n"
 after = after.replace(here_arg.group(0), "")
 commands = commands.replace(
     "--config=.pre-commit-config.yaml",
-    '--config="${HERE}/../generated-config/pre-commit-config.yaml"',
+    '--config="${HERE}/../' + CONFIG_PATH + '"',
 )
 
 with open(hook_path, "w") as out:
