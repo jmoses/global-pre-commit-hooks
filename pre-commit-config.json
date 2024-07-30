@@ -107,19 +107,6 @@
           ]
         }
       ]
-    },
-    {
-      "repo": "local",
-      "hooks": [
-        {
-          "id": "panic-if-local-precommit",
-          "name": "panic-if-local-precommit",
-          "entry": "$this/scripts/local-precommit.sh",
-          "language": "script",
-          "always_run": true,
-          "pass_filenames": false
-        }
-      ]
     }
   ]
 }
