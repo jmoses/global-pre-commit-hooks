@@ -62,6 +62,18 @@
       ]
     },
     {
+      "repo": "https://github.com/hadolint/hadolint",
+      "rev": "v2.12.0",
+      "hooks": [
+        {
+          "id": "hadolint",
+          "stages": [
+            "pre-push"
+          ]
+        }
+      ]
+    },
+    {
       "repo": "https://github.com/jmoses/global-pre-commit-hooks.git",
       "rev": "89da7871ee4e38e3f23b5df200697ec745dfd406",
       "hooks": [
