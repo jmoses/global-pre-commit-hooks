@@ -3,16 +3,15 @@
 import tempfile
 import subprocess
 import sys
-import os.path
+import os
 import stat
 import re
+import shutil
 
-# Set the config path. Note this is relative to the global-pre-commit-hooks repo.
+# Set the config path. If relative, it's relative to the repo clone root. Absolute paths also supported.
 CONFIG_PATH = os.environ.get("PRECOMMIT_CONFIG_PATH", ".pre-commit-config.yaml")
-
-# from https://github.com/pre-commit/pre-commit/blob/faa6f8c70ccef865884adb0cb079c8162013bf19/pre_commit/commands/install_uninstall.py#L31
-TEMPLATE_START = "# start templated\n"
-TEMPLATE_END = "# end templated\n"
+if not os.path.isabs(CONFIG_PATH):
+    CONFIG_PATH = os.path.join(os.getcwd(), CONFIG_PATH)
 
 hook_name = sys.argv[1]
 hook_path = os.path.join("hooks", hook_name)
@@ -22,30 +21,8 @@ if os.path.exists(hook_path):
     sys.exit(1)
 
 target = tempfile.TemporaryDirectory()
-subprocess.run(["pre-commit", "init-templatedir", target.name, "-t", hook_name])
+subprocess.run(
+    ["pre-commit", "init-templatedir", target.name, "-t", hook_name, "-c", CONFIG_PATH]
+).check_returncode()
 
-contents = open(os.path.join(target.name, "hooks", hook_name)).read()
-
-before, rest = contents.split(TEMPLATE_START)
-commands, after = rest.split(TEMPLATE_END)
-
-here_arg = re.search(r"^HERE=.*", after, re.MULTILINE)
-if not here_arg:
-    print("Can't find here arg")
-    sys.exit(1)
-
-before += f"\n{here_arg.group(0)}\n"
-after = after.replace(here_arg.group(0), "")
-commands = commands.replace(
-    "--config=.pre-commit-config.yaml",
-    '--config="${HERE}/../' + CONFIG_PATH + '"',
-)
-
-with open(hook_path, "w") as out:
-    out.write(before)
-    out.write(commands)
-    out.write(after)
-
-original_mode = os.stat(hook_path).st_mode
-new_mode = original_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
-os.chmod(hook_path, new_mode)
+shutil.copy(os.path.join(target.name, "hooks", hook_name), hook_path)
