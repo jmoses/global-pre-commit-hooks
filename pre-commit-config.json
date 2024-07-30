@@ -96,7 +96,8 @@
           ],
           "stages": [
             "pre-push"
-          ]
+          ],
+          "always_run": true
         },
         {
           "id": "local-repo-hook",
