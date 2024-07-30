@@ -8,6 +8,7 @@
   pass_filenames: false
 - id: local-repo-hook
   name: Run the repo-local hook script
+  description: This may double-run any previously installed pre-commit hooks.
   entry: ./scripts/local-scripts.sh
   language: script
   always_run: true
