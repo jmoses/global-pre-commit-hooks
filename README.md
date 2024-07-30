@@ -26,4 +26,4 @@ Where `hook_name` is anything that pre-commit supports on it's own.  This will w
 
 ### Global pre-commit config location
 
-By default the `add-hook.py` command will expect the pre-commit config to be `[repo clone location]/.pre-commit-config.yaml`.  If you want to have it read from somewhere else, the `add-hook.py` command will read from the `PRECOMMIT_CONFIG_PATH` environment variable, which should be a path _relative_ to the repo clone location.
+By default the `add-hook.py` command will expect the pre-commit config to be `[repo clone location]/.pre-commit-config.yaml`.  If you want to have it read from somewhere else, the `add-hook.py` command will read from the `PRECOMMIT_CONFIG_PATH` environment variable, which can be a path relative to the repo, or an absolute path.
