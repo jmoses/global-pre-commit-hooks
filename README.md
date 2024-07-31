@@ -6,7 +6,7 @@ It will run all of the configured hooks at the appropriate time.  It will also c
 
 ## To enable
 
-Install `pre-commit`, `yq`, `jq` and clone this repo.  Then from in the clone
+Install `pre-commit` and clone this repo.  Then from in the clone
 
 ```
 git config --global core.hooksPath $(pwd)/hooks
@@ -27,3 +27,15 @@ Where `hook_name` is anything that pre-commit supports on it's own.  This will w
 ### Global pre-commit config location
 
 By default the `add-hook.py` command will expect the pre-commit config to be `[repo clone location]/.pre-commit-config.yaml`.  If you want to have it read from somewhere else, the `add-hook.py` command will read from the `PRECOMMIT_CONFIG_PATH` environment variable, which can be a path relative to the repo, or an absolute path.
+
+# [pre-commit](https://github.com/pre-commit/pre-commit) hooks
+
+## `npm-task-if-exists`
+
+Runs an NPM task if it exists. Takes the task name as an argument.
+
+Requires: [jq](https://github.com/jqlang/jq)
+
+## `local-repo-hook`
+
+Runs an existing hook in the local repo, if it is present.

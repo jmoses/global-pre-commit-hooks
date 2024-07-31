@@ -1,5 +1,6 @@
 - id: npm-task-if-exists
-  name: Run an NPM task if it exists
+  name: NPM task if exists
+  description: Execute an NPM task
   entry: ./scripts/node/npm-task-if-exists.sh
   language: script
   types_or:
@@ -7,7 +8,7 @@
     - ts
   pass_filenames: false
 - id: local-repo-hook
-  name: Run the repo-local hook script
+  name: Run local repo hook
   description: This may double-run any previously installed pre-commit hooks.
   entry: ./scripts/local-scripts.sh
   language: script
