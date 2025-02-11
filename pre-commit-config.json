@@ -90,7 +90,7 @@
         },
         {
           "id": "npm-task-if-exists",
-          "name": "npm commitlit",
+          "name": "npm commitlint",
           "args": [
             "commitlint"
           ],
