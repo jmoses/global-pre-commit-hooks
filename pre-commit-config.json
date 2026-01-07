@@ -75,7 +75,7 @@
     },
     {
       "repo": "https://github.com/jmoses/global-pre-commit-hooks.git",
-      "rev": "99cee97c5e7868cf19de90ed2b9cb5aaad40a1ad",
+      "rev": "19c24522e42aacfbaed55bb523c44f57e5c929b4",
       "hooks": [
         {
           "id": "npm-task-if-exists",
